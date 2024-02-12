@@ -275,3 +275,4 @@ class Shinchan:
         t.circle(100, 35)
         t.left(180)
         t.circle(-100, 10)
+        
