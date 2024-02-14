@@ -70,7 +70,7 @@ def scarf():
     fd(10)
     circle(-5,90)
     end_fill()
-    
+
 def nose():
      ankle(-10, 158)
      seth(315)
@@ -78,3 +78,124 @@ def nose():
      begin_fill()
      circle(20)
      end_fill()
+
+def black_eyes():
+    seth(0)
+    ankle(-20, 195)
+    fillcolor('#000000')
+    begin_fill()
+    circle(13)
+    end_fill()
+    pensize(6)
+    ankle(20,205)
+    seth(75)
+    circle(-10,150)
+    pensize(3)
+    ankle(-17,200)
+    seth(0)
+    fillcolor('#ffffff')
+    begin_fill()
+    circle(5)
+    end_fill()
+    ankle(0,0)
+
+def face():
+    fd(183)
+    lt(45)
+    fillcolor('#ffffff')
+    begin_fill()
+    circle(120,100)
+    seth(180)
+    fd(121)
+    pendown()
+    seth(215)
+    circle(120,100)
+    end_fill()
+    ankle(63.56,218.24)
+    seth(90)
+    eyes()
+    seth(180)
+    penup()
+    fd(60)
+    pendown()
+    seth(90)
+    eyes()
+    penup()
+    seth(180)
+    fd(64)
+
+def taauko():
+    penup()
+    circle(150,40)
+    pendown()
+    fillcolor("#00a0de")
+    begin_fill()
+    circle(150,280)
+    end_fill()
+
+def Doraemon():
+    taauko()
+    scarf()
+    face()
+    nose()
+    mukh()
+    daari()
+    ankle(0,0)
+
+    seth(0)
+    penup()
+    circle(150,50)
+    pendown()
+
+    seth(30)
+
+    fd(40)
+
+    seth(70)
+
+    circle(-30,270)
+    fillcolor("#00a0de")
+    begin_fill()
+
+    seth(230)
+
+    fd(80)
+
+    seth(90)
+    circle(1000,1)
+
+    seth(-89)
+    circle(-1000,10)
+
+    seth(180)
+
+    fd(70)
+
+    seth(90)
+    circle(30,180)
+
+    seth(180)
+
+    fd(70)
+
+    seth(100)
+    circle(-1000,9)
+
+    seth(-86)
+    circle(1000,2)
+   
+    seth(230)
+
+    fd(40)
+    circle(-30,230)
+
+    seth(45)
+    fd(81)
+
+    seth(0)
+
+    fd(203)
+    circle(5,90)
+    
+    fd(10)
+    circle(5,90)
