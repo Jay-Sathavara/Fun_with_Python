@@ -196,6 +196,111 @@ def Doraemon():
 
     fd(203)
     circle(5,90)
-    
+
     fd(10)
     circle(5,90)
+
+    fd(7)
+    seth(40)
+    circle(150,10)
+
+    seth(30)
+    fd(40)
+    end_fill()
+
+    seth(70)
+    fillcolor("#ffffff")
+    begin_fill()
+    circle(-30)
+    end_fill()
+    ankle(103.74,-182.59)
+
+    seth(0)
+    fillcolor("#ffffff")
+    begin_fill()
+
+    fd(15)
+    circle(-15,180)
+
+    fd(90)
+    circle(-15,180)
+
+    fd(10)
+    end_fill()
+    ankle(-96.26,-182.59)
+
+    seth(180)
+    fillcolor("#ffffff")
+    begin_fill()
+
+    fd(15)
+    circle(15,180)
+
+    fd(90)
+    circle(15,180)
+
+    fd(10)
+    end_fill()
+    ankle(-133.97,-91.81)
+
+    seth(50)
+    fillcolor("#ffffff")
+    begin_fill()
+    circle(30)
+    end_fill()
+    ankle(-103.42,15.09)
+
+    seth(0)
+    fd(38)
+    seth(230)
+    begin_fill()
+    circle(90,260)
+    end_fill()
+    ankle(5,-40)
+
+    seth(0)
+    fd(70)
+    seth(-90)
+    circle(-70,180)
+
+    seth(0)
+    fd(70)
+    ankle(-103.42, 15.09)
+
+    fd(90)
+    seth (70)
+    fillcolor('#ffd200')
+    begin_fill()
+    circle(-20)
+    end_fill()
+
+    seth (170)
+    fillcolor ('#ffd200')
+    begin_fill()
+    circle(-2, 180)
+
+    seth (10)
+    circle(-100, 22)
+    circle(-2, 180)
+
+    seth (180 - 10) 
+    circle (100, 22) 
+    end_fill()
+    goto (-13.42, 15.09)
+
+    seth(250)
+    circle(20, 110)
+    
+    seth(90)
+    fd(15)
+    dot(10)
+    ankle(0,-150)
+    black_eyes()
+
+if __name__ == '__main__':
+    screensize(800,600,"#f0f0f0")
+    pensize(3)
+    speed(9)
+    Doraemon()
+    ankle(100,-300)
+    mainloop()
