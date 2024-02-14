@@ -48,4 +48,33 @@ def daari():
     seth(-13)
     fd(60)
 
+def mukh():
+    ankle(5, 148)
+    seth(270)
+    fd(100)
+    seth(0)
+    circle(120,50)
+    seth(230)
+    circle(-120,100)
 
+def scarf():
+    fillcolor('#e70010')
+    begin_fill()
+    seth(0)
+    fd(200)
+    circle(-5,90)
+    fd(10)
+    circle(-5,90)
+    fd(207)
+    circle(-5,90)
+    fd(10)
+    circle(-5,90)
+    end_fill()
+    
+def nose():
+     ankle(-10, 158)
+     seth(315)
+     fillcolor('#e70010')
+     begin_fill()
+     circle(20)
+     end_fill()
