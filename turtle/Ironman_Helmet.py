@@ -22,3 +22,21 @@ ankur2Goto = (0, -30)
 ankur3Goto = (0, -220)
 turtle.speed(2)
 
+def logo(a, b):
+    turtle.penup()
+    turtle.goto(b)
+    turtle.pendown()
+    turtle.color('#ffffff')  # Light white
+    turtle.begin_fill()
+    for i in range(len(a[0])):
+        x, y = a[0][i]
+        turtle.goto(x, y)
+    for i in range(len(a[1])):
+        x, y = a[1][i]
+        turtle.goto(x, y)
+    turtle.end_fill()
+logo(ankur1, ankur1Goto)
+logo(ankur2, ankur2Goto)
+logo(ankur3, ankur3Goto)
+turtle.hideturtle()
+turtle.done()
