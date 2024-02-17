@@ -1,4 +1,4 @@
-# J_P_0030
+# JP0030
 
 # Tic-Tac-Toe Program using
 # random number in Python
