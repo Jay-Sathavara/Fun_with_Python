@@ -45,3 +45,34 @@ def start1():
                     else:
                         print ("Wrong input. You are disqualified from the game.")
                         lose1()
+
+                        
+                    i, j = 1, 1
+ 
+                    print ("Now enter the values")
+                    while i <= inp:
+                        a = input('> ')
+                        a = int(a)
+                        xyz.append(a)
+                        i = i + 1
+                     
+                    # store the last element of xyz.
+                    last = xyz[-1] 
+                     
+                    # checks whether the input 
+                    # numbers are consecutive
+                    if check(xyz) == True: 
+                        if last == 21:
+                            lose1()
+                             
+                        else:
+                            #"Computer's turn."
+                            while j <= comp:
+                                xyz.append(last + j)
+                                j = j + 1
+                            print ("Order of inputs after computer's turn is: ")
+                            print (xyz)
+                            last = xyz[-1]
+                    else:
+                        print ("\nYou did not input consecutive integers.")
+                        lose1()
