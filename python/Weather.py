@@ -29,3 +29,23 @@ def getNotification():
         info="Here is the eather description of "+ cityName+ ":"+" \nTemperature = " +str(temp) +"°C"+"\n atmospheric pressure = " + str(pres) + "hPa"+"\n humidity = " +str(hum) +"%"+"\n description of the weather= " + str(weather_desc)
 
       
+        notification.notify(
+                    title = "YOUR WEATHER REPORT",
+                    message=info ,
+
+                    timeout=2)
+
+        time.sleep(7)
+    
+    except Exception as e:
+        mb.showerror('Error',e)
+        
+wn = Tk()
+wn.title("PythonGeeks Weather Desktop Notifier")
+wn.geometry('700x200')
+wn.config(bg='azure')
+
+Label(wn, text="PythonGeeks Weather Desktop Notifier", font=('Courier', 15), fg='grey19',bg='azure').place(x=100,y=15)
+
+Label(wn, text='Enter the Location:', font=("Courier", 13),bg='azure').place(relx=0.05, rely=0.3)
+
