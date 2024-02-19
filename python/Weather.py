@@ -16,4 +16,16 @@ def getNotification():
         x = response.json() 
         y = x["main"] 
  
-     
+        temp = y["temp"]
+
+        pres = y["pressure"]
+
+        hum = y["humidity"]
+
+        z = x["weather"]
+
+        weather_desc = z[0]["description"]
+
+        info="Here is the eather description of "+ cityName+ ":"+" \nTemperature = " +str(temp) +"°C"+"\n atmospheric pressure = " + str(pres) + "hPa"+"\n humidity = " +str(hum) +"%"+"\n description of the weather= " + str(weather_desc)
+
+      
