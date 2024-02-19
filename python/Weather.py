@@ -49,3 +49,11 @@ Label(wn, text="PythonGeeks Weather Desktop Notifier", font=('Courier', 15), fg=
 
 Label(wn, text='Enter the Location:', font=("Courier", 13),bg='azure').place(relx=0.05, rely=0.3)
 
+place = StringVar(wn)
+place_entry = Entry(wn, width=50, textvariable=place)
+place_entry.place(relx=0.5, rely=0.3)
+
+#Button to get notification
+btn = Button(wn, text='Get Notification', font=7, fg='grey19',command=getNotification).place(relx=0.4, rely=0.75)
+#run the window till the closed by user
+wn.mainloop()
