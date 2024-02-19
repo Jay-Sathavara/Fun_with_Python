@@ -17,3 +17,23 @@ def convert_to_gram():
     Label(window,text="This weight in grams would be",font=("Arial", 12 )).pack()
     Label(window,text=gram,bg="red").pack()
 
+def convert_to_ounce():
+    kg1=kg.get()
+    ounce = float(kg1)*35.274
+    Label(window,text="This weight in ounce would be",font=("Arial", 12 )).pack()
+    Label(window,text=ounce,bg="red").pack()
+
+def convert_to_pound():
+    kg1=kg.get()
+    pound = float(kg1)*2.20462
+    Label(window,text="This weight in pound would be",font=("Arial", 12 )).pack()
+    Label(window,text=pound,bg="red").pack()
+
+Label(window,text="Enter the weight in Kgs",font=("Arial", 14 )).pack()
+Entry(window,textvariable=kg).pack()
+
+Button(window,text="Convert to Gram",bg="blue",command=convert_to_gram).pack()
+Button(window,text="Convert to Ounce",bg="blue",command=convert_to_ounce).pack()
+Button(window,text="Convert to Pound",bg="blue",command=convert_to_pound).pack()
+
+window.mainloop()
