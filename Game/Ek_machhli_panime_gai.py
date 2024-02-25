@@ -18,7 +18,7 @@ def ek_machli_pani_mein_gayi():
             print("\nHaar gaye ! machli pahelese hi mari hui hee . \nPura machliyon ka khandan khatam ho gaya. !!🤣!!")
         else:
             print(f"\n{fish_count} machliyan baaki hain.\n")
-            computer_move = min(3, fish_count)
+            computer_move = random.randint(1, min(3, fish_count))
             print(f"Ab computer ne {computer_move} machliyan utha li.")
             fish_count -= computer_move
             if fish_count <= 0:
