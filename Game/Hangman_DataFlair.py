@@ -3,7 +3,6 @@
 import random
 import time
 
-# Initial Steps to invite in the game:
 print("\nWelcome to Hangman game by DataFlair\n")
 name = input("Enter your name: ")
 print("Hello " + name + "! Best of Luck!")
@@ -11,8 +10,6 @@ time.sleep(2)
 print("The game is about to start!\n Let's play Hangman!")
 time.sleep(3)
 
-
-# The parameters we require to execute the game:
 def main():
     global count
     global display
@@ -28,3 +25,14 @@ def main():
     display = '_' * length
     already_guessed = []
     play_game = ""
+
+def play_loop():
+    global play_game
+    play_game = input("Do You want to play again? y = yes, n = no \n")
+    while play_game not in ["y", "n","Y","N"]:
+        play_game = input("Do You want to play again? y = yes, n = no \n")
+    if play_game == "y":
+        main()
+    elif play_game == "n":
+        print("Thanks For Playing! We expect you back again!")
+        exit()
