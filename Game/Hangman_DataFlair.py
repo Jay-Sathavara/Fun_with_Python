@@ -60,7 +60,7 @@ def hangman():
     elif guess in already_guessed:
         print("Try another letter.\n")
 
-     else:
+    else:
         count += 1
 
         if count == 1:
@@ -99,7 +99,7 @@ def hangman():
                  "__|__\n")
            print("Wrong guess. " + str(limit - count) + " guesses remaining\n")
 
-         elif count == 4:
+        elif count == 4:
             time.sleep(1)
             print("   _____ \n"
                   "  |     | \n"
@@ -132,8 +132,5 @@ def hangman():
     elif count != limit:
         hangman()
 
-
 main()
-
-
 hangman()
