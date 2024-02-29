@@ -11,8 +11,8 @@ root.title('Data Flair Roll the Dice')
 l0 = tkinter.Label(root, text="")
 l0.pack()
 
-l1 = tkinter.Label(root, text="Hello from Data Flair!", fg = "light green",
-        bg = "dark green",
+l1 = tkinter.Label(root, text="Hello from JP0030!", fg = "light green",
+        bg = "dark blue",
         font = "Helvetica 16 bold italic")
 l1.pack()
 
