@@ -13,7 +13,7 @@ WIDTH = 800
 HEIGHT = 500
 FPS = 12   
 pygame.init()
-pygame.display.set_caption('Fruit-Ninja Game -- DataFlair')
+pygame.display.set_caption('Fruit-Ninja Game -- JP0030')
 gameDisplay = pygame.display.set_mode((WIDTH, HEIGHT))   
 clock = pygame.time.Clock()
 
@@ -62,16 +62,14 @@ def draw_text(display, text, size, x, y):
     text_rect.midtop = (x, y)
     gameDisplay.blit(text_surface, text_rect)
 
-# draw players lives
 def draw_lives(display, x, y, lives, image) :
     for i in range(lives) :
         img = pygame.image.load(image)
-        img_rect = img.get_rect()       #gets the (x,y) coordinates of the cross icons (lives on the the top rightmost side)
-        img_rect.x = int(x + 35 * i)    #sets the next cross icon 35pixels awt from the previous one
-        img_rect.y = y                  #takes care of how many pixels the cross icon should be positioned from top of the screen
+        img_rect = img.get_rect()       
+        img_rect.x = int(x + 35 * i)    
+        img_rect.y = y
         display.blit(img, img_rect)
 
-# show game over display & front display
 def show_gameover_screen():
     gameDisplay.blit(background, (0,0))
     draw_text(gameDisplay, "FRUIT NINJA!", 90, WIDTH / 2, HEIGHT / 4)
