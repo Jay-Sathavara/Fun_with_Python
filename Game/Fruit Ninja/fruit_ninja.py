@@ -11,7 +11,7 @@ fruits = ['melon', 'orange', 'pomegranate', 'guava', 'bomb']
 
 WIDTH = 800
 HEIGHT = 500
-FPS = 12   
+FPS = 10
 pygame.init()
 pygame.display.set_caption('Fruit-Ninja Game -- JP0030')
 gameDisplay = pygame.display.set_mode((WIDTH, HEIGHT))   
@@ -25,7 +25,7 @@ GREEN = (0,255,0)
 BLUE = (0,0,255)
 
 background = pygame.image.load('back.jpg') 
-font = pygame.font.Font(os.path.join(os.getcwd(), 'comic.ttf'), 42)
+font = pygame.font.Font(os.path.join(os.getcwd(), 'comic.ttf'), 45)
 score_text = font.render('Score : ' + str(score), True, (255, 255, 255)) 
 lives_icon = pygame.image.load('images/white_lives.png')           
 
