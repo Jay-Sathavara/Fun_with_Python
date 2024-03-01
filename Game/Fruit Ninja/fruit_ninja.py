@@ -87,3 +87,24 @@ def show_gameover_screen():
             if event.type == pygame.KEYUP:
                 waiting = False
 
+first_round = True
+game_over = True       
+game_running = True    
+while game_running :
+    if game_over :
+        if first_round :
+            show_gameover_screen()
+            first_round = False
+        game_over = False
+        player_lives = 3
+        draw_lives(gameDisplay, 690, 5, player_lives, 'images/red_lives.png')
+        score = 0
+
+    for event in pygame.event.get():
+        
+        if event.type == pygame.QUIT:
+            game_running = False
+
+    gameDisplay.blit(background, (0, 0))
+    gameDisplay.blit(score_text, (0, 0))
+    draw_lives(gameDisplay, 690, 5, player_lives, 'images/red_lives.png')
