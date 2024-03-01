@@ -53,3 +53,4 @@ for fruit in fruits:
 
 def hide_cross_lives(x, y):
     gameDisplay.blit(pygame.image.load("images/red_lives.png"), (x, y))
+
