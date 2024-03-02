@@ -53,7 +53,6 @@ class Tetris:
     block = None
     nextBlock=None
     
-    #Sets the properties of the board
     def __init__(self, height, width):
         self.height = height
         self.width = width
@@ -63,13 +62,12 @@ class Tetris:
                 new_line.append(0)
             self.field.append(new_line)
 
-    #Creates a new block
     def new_block(self):
         self.block = Block(3, 0,random.randint(0, len(shapes) - 1))
                            
     def next_block(self):
         self.nextBlock=Block(3,0,random.randint(0, len(shapes) - 1))
-    #Checks if the blocks touch the top of the board
+   
     def intersects(self):
         intersection = False
         for i in range(4):
@@ -82,7 +80,6 @@ class Tetris:
                         intersection = True
         return intersection
 
-    #Checks if a row is formed and destroys that line
     def break_lines(self):
         lines = 0
         for i in range(1, self.height):
@@ -97,4 +94,52 @@ class Tetris:
                         self.field[i1][j] = self.field[i1 - 1][j]
         self.score += lines ** 2
 
+    def draw_next_block(self,screen):
     
+        font = pygame.font.SysFont("Calibri", 30)
+        label = font.render("Next Shape", 1, (128,128,128))
+
+        sx = topLeft_x + gameWidth + 50
+        sy = topLeft_y + gameHeight/2 - 100
+        format = self.nextBlock.image()
+        for i in range(4):
+                for j in range(4):
+                    p = i * 4 + j
+                    if p in self.nextBlock.image():
+                        pygame.draw.rect(screen, shapeColors[self.nextBlock.color],(sx + j*30, sy + i*30, 30, 30), 0)
+    
+    def moveBottom(self):
+        while not self.intersects():
+            self.block.y += 1
+        self.block.y -= 1
+        self.freeze()
+
+    def moveDown(self):
+        self.block.y += 1
+        if self.intersects():
+            self.block.y -= 1
+            self.freeze()
+
+    def freeze(self):
+        for i in range(4):
+            for j in range(4):
+                if i * 4 + j in self.block.image():
+                    self.field[i + self.block.y][j + self.block.x] = self.block.color
+        self.break_lines()
+        self.block=self.nextBlock
+        self.next_block() 
+        if self.intersects(): 
+            self.state = "gameover"
+
+    def moveHoriz(self, dx):
+        old_x = self.block.x
+        self.block.x += dx
+        if self.intersects():
+            self.block.x = old_x
+
+    def rotate(self):
+        old_rotation = self.block.rotation
+        self.block.rotate()
+        if self.intersects():
+            self.block.rotation = old_rotation
+
