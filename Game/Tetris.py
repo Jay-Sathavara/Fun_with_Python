@@ -40,3 +40,61 @@ class Block:
     def rotate(self):
         self.rotation = (self.rotation + 1) % len(shapes[self.type])
 
+class Tetris:
+    level = 2
+    score = 0
+    state = "start"
+    field = []
+    height = 0
+    width = 0
+    zoom = 20
+    x = 100
+    y = 60
+    block = None
+    nextBlock=None
+    
+    #Sets the properties of the board
+    def __init__(self, height, width):
+        self.height = height
+        self.width = width
+        for i in range(height):
+            new_line = []
+            for j in range(width):
+                new_line.append(0)
+            self.field.append(new_line)
+
+    #Creates a new block
+    def new_block(self):
+        self.block = Block(3, 0,random.randint(0, len(shapes) - 1))
+                           
+    def next_block(self):
+        self.nextBlock=Block(3,0,random.randint(0, len(shapes) - 1))
+    #Checks if the blocks touch the top of the board
+    def intersects(self):
+        intersection = False
+        for i in range(4):
+            for j in range(4):
+                if i * 4 + j in self.block.image():
+                    if i + self.block.y > self.height - 1 or \
+                            j + self.block.x > self.width - 1 or \
+                            j + self.block.x < 0 or \
+                            self.field[i + self.block.y][j + self.block.x] > 0:
+                        intersection = True
+        return intersection
+
+    #Checks if a row is formed and destroys that line
+    def break_lines(self):
+        lines = 0
+        for i in range(1, self.height):
+            zeros = 0
+            for j in range(self.width):
+                if self.field[i][j] == 0:
+                    zeros += 1
+            if zeros == 0:
+                lines += 1
+                for i1 in range(i, 1, -1):
+                    for j in range(self.width):
+                        self.field[i1][j] = self.field[i1 - 1][j]
+        self.score += lines ** 2
+
+    
