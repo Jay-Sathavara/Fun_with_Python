@@ -33,3 +33,41 @@ uranus_image = pygame.transform.scale(uranus_image, (35, 35))
 jupiter_image = pygame.transform.scale(jupiter_image, (50, 50))
 neptune_image = pygame.transform.scale(neptune_image, (40, 40))
 
+planets = [
+    {"name": "Sun", "image": sun_image, "radius": 200, "x": 400, "y": 390, "vx": 0, "vy": 0},
+    {"name": "Mercury", "image": mercury_image, "angle": 0, "distance": 65, "period": 0.24, "radius": 10},
+    {"name": "Venus", "image": venus_image, "angle": 0, "distance": 90, "period": 0.62, "radius": 20},
+    {"name": "Earth", "image": earth_image, "angle": 0, "distance": 125, "period": 1, "radius": 25},
+    {"name": "Mars", "image": mars_image, "angle": 0, "distance": 155, "period": 1.88, "radius": 15},
+    {"name": "Jupiter", "image": jupiter_image, "angle": 0, "distance": 195, "period": 11.86, "radius": 45},
+    {"name": "Saturn", "image": saturn_image, "angle": 0, "distance": 260, "period": 29.5, "radius": 40},
+    {"name": "Uranus", "image": uranus_image, "angle": 0, "distance": 320, "period": 84, "radius": 30},
+    {"name": "Neptune", "image": neptune_image, "angle": 0, "distance": 370, "period": 164.8, "radius": 35}
+]
+
+for planet in planets[1:]:
+    planet["x"] = planets[0]["x"] + math.cos(planet["angle"]) * planet["distance"]
+    planet["y"] = planets[0]["y"] + math.sin(planet["angle"]) * planet["distance"]
+
+for planet in planets[1:]:
+    planet["past_positions"] = []
+
+clock = pygame.time.Clock()
+fps = 30
+
+running = True
+while running:
+
+    for event in pygame.event.get():
+
+        if event.type == pygame.QUIT:
+            running = False
+
+    screen.blit(background_image, (0, 0))
+
+    image_rect = planets[0]["image"].get_rect()
+    image_rect.center = (int(planets[0]["x"]), int(planets[0]["y"]))
+    screen.blit(planets[0]["image"], image_rect)
+   
+    for planet in planets[1:]:
+        
