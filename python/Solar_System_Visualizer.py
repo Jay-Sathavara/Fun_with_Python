@@ -70,4 +70,23 @@ while running:
     screen.blit(planets[0]["image"], image_rect)
    
     for planet in planets[1:]:
+        planet["angle"] += 0.05 * (1 / planet["period"])
+
+        planet["x"] = planets[0]["x"] + math.cos(planet["angle"]) * planet["distance"]
+        planet["y"] = planets[0]["y"] + math.sin(planet["angle"]) * planet["distance"]
+
+        planet["past_positions"].append((planet["x"], planet["y"]))
+
+        for i in range(1, len(planet["past_positions"])):
+            pygame.draw.line(screen, (153,153,0), planet["past_positions"][i-1], planet["past_positions"][i], 1)
+
+        image_rect = planet["image"].get_rect()
+        image_rect.center = (int(planet["x"]), int(planet["y"]))
         
+        screen.blit(planet["image"], image_rect)
+
+    pygame.display.update()
+
+    clock.tick(fps)
+
+pygame.quit()
