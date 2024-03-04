@@ -55,3 +55,68 @@ def staying():
         winner.set("Player wins!")
     else:
         winner.set("Draw!")
+
+def hitting():
+    player_hand.append(getCard(player_card_frame))
+    player_score = calcScore(player_hand)
+
+    playerScore.set(player_score)
+    if player_score > 21:
+        winner.set("Dealer Wins!")
+
+
+def initial_deal():
+    hitting()
+    dealer_hand.append(getCard(dealer_cardFrame))
+    dealerScore.set(calcScore(dealer_hand))
+    hitting()
+
+
+def new_game():
+    global dealer_cardFrame
+    global player_card_frame
+    global dealer_hand
+    global player_hand
+    dealer_cardFrame.destroy()
+    dealer_cardFrame = tkinter.Frame(gameWindow, bg="black")
+    dealer_cardFrame.place(x=100,y=80)
+    
+    player_card_frame.destroy()
+    player_card_frame = tkinter.Frame(gameWindow, bg="black")
+    player_card_frame.place(x=100,y=200)
+
+    winner.set("")
+
+    dealer_hand = []
+    player_hand = []
+    initial_deal()
+
+
+def shuffle():
+    random.shuffle(deck)
+
+gameWindow = tkinter.Tk()
+
+gameWindow.title("DataFlair Black Jack")
+gameWindow.geometry("640x480")
+
+tkinter.Label(gameWindow, text='DataFlair Black Jack',
+      fg='black', font=('Courier', 20,BOLD)).place(x=150, y=10)
+
+winner=tkinter.StringVar()
+result = tkinter.Label(gameWindow, textvariable=winner,fg='black',font=('Courier', 15))
+result.place(x=250,y=50)
+
+dealerScore = tkinter.IntVar()
+tkinter.Label(gameWindow, text="Dealer Score:", fg="black",bg="white").place(x=10,y=80)
+tkinter.Label(gameWindow, textvariable=dealerScore, fg="black",bg="white").place(x=10,y=100)
+dealer_cardFrame = tkinter.Frame(gameWindow, bg="black")
+dealer_cardFrame.place(x=100,y=80)
+
+playerScore = tkinter.IntVar()
+
+tkinter.Label(gameWindow, text="Player Score:", fg="black",bg="white").place(x=10,y=200)
+tkinter.Label(gameWindow, textvariable=playerScore,fg="black",bg="white").place(x=10,y=220)
+player_card_frame = tkinter.Frame(gameWindow, bg="black")
+player_card_frame.place(x=100,y=200)
+
