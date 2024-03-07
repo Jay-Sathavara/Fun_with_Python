@@ -103,3 +103,25 @@ root.title(title)
 root.geometry('250x400')
 root.resizable(0, 0)
 root.config(bg=background)
+
+Label(root, text=title, font=("Comic Sans MS", 15), bg=background, wraplength=250).place(x=20, y=0)
+
+Button(root, text='Open a file', width=20, font=button_font, bg=button_background, command=open_file).place(x=30, y=50)
+
+Button(root, text='Copy a file', width=20, font=button_font, bg=button_background, command=copy_file).place(x=30, y=90)
+
+Button(root, text='Rename a file', width=20, font=button_font, bg=button_background, command=rename_file).place(x=30, y=130)
+
+Button(root, text='Delete a file', width=20, font=button_font, bg=button_background, command=delete_file).place(x=30, y=170)
+
+Button(root, text='Open a folder', width=20, font=button_font, bg=button_background, command=open_folder).place(x=30, y=210)
+
+Button(root, text='Delete a folder', width=20, font=button_font, bg=button_background, command=delete_folder).place(x=30, y=250)
+
+Button(root, text='Move a folder', width=20, font=button_font, bg=button_background, command=move_folder).place(x=30, y=290)
+
+Button(root, text='List all files in a folder', width=20, font=button_font, bg=button_background,
+       command=list_files_in_folder).place(x=30, y=330)
+
+root.update()
+root.mainloop()
