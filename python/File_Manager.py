@@ -52,3 +52,54 @@ def rename_file():
 def open_folder():
     folder = fd.askdirectory(title="Select Folder to open")
     os.startfile(folder)
+
+def delete_folder():
+    folder_to_delete = fd.askdirectory(title='Choose a folder to delete')
+    os.rmdir(folder_to_delete)
+    mb.showinfo("Folder Deleted", "Your desired folder has been deleted")
+
+
+def move_folder():
+    folder_to_move = fd.askdirectory(title='Select the folder you want to move')
+    mb.showinfo(message='You just selected the folder to move, now please select the desired destination where you want to move the folder to')
+    destination = fd.askdirectory(title='Where to move the folder to')
+
+    try:
+        shutil.move(folder_to_move, destination)
+        mb.showinfo("Folder moved", 'Your desired folder has been moved to the location you wanted')
+    except:
+        mb.showerror('Error', 'We could not move your folder. Please make sure that the destination exists')
+
+
+def list_files_in_folder():
+    folder = fd.askdirectory(title='Select the folder whose files you want to list')
+
+    files = os.listdir(str(os.path.abspath(folder)))
+
+    list_files_wn = Toplevel(root)
+    list_files_wn.title('Files in your selected folder')
+    list_files_wn.geometry('150x250')
+    list_files_wn.resizable(0, 0)
+
+    listbox = Listbox(list_files_wn, selectbackground='SteelBlue', font=("Georgia", 10), height=15, width=20)
+
+    scrollbar = Scrollbar(listbox, orient=VERTICAL, command=listbox.yview)
+    scrollbar.pack(side=RIGHT)
+
+    listbox.config(yscrollcommand=scrollbar.set)
+    listbox.place(x=10, y=10)
+
+    for file in list(files):
+        listbox.insert(END, file)
+
+title = 'JP0030 File Manager'
+background = 'Yellow'
+
+button_font = ("Times New Roman", 13)
+button_background = 'Turquoise'
+
+root = Tk()
+root.title(title)
+root.geometry('250x400')
+root.resizable(0, 0)
+root.config(bg=background)
