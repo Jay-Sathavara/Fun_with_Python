@@ -2,7 +2,7 @@
 
 import turtle 
 
-turtle.Screen().bgcolor("floralwhite") 
+turtle.Screen().bgcolor("floralwhite")  # Change as your wish Color 
 
 t = turtle.Turtle()
 
@@ -16,8 +16,8 @@ def draw_circle():
 	t.setposition(0,-280)
 	t.pendown()
 	t.begin_fill()
-	t.color('darkorchid2')
-	t.pencolor("gold1")
+	t.color('darkorchid2') # Change as your wish Color 
+	t.pencolor("gold1") # Change as your wish Color 
 	t.circle(300)
 	t.end_fill()
 	t.penup()
@@ -27,7 +27,7 @@ def draw_circle2():
 	t.setposition(0,-230)
 	t.pendown() 
 	t.begin_fill()
-	t.color('ghostwhite')
+	t.color('ghostwhite') # Change as your wish Color 
 	t.circle(250)
 	t.end_fill()
 	t.penup()
@@ -36,9 +36,9 @@ def draw_A():
 	t.setposition (30,-110)
 	t.pendown()
 	t.begin_fill() 
-	t.color("darkorchid2")
+	t.color("darkorchid2") # Change as your wish Color 
 	t.pensize(10)
-	t.pencolor("yellow3")
+	t.pencolor("yellow3") # Change as your wish Color
 	t.forward(23)
 	t.backward(123)
 	t.left(60)
@@ -63,8 +63,8 @@ def draw_triangle():
 	t.setposition(53,-40)
 	t.pendown()
 	t.begin_fill() 
-	t.color("whitesmoke")
-	t.pencolor("gold3")
+	t.color("whitesmoke") # Change as your wish Color 
+	t.pencolor("gold3") # Change as your wish Color 
 	t.right (90)
 	t.forward(100)
 	t.right(115) 
