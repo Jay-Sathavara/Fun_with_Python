@@ -51,3 +51,19 @@ def game_front_screen():
             if event.type == pygame.KEYUP:
                 waiting = False
 
+game_over = True
+game_start = True
+while True:
+    if game_over:
+        if game_start:
+            game_front_screen()
+        game_start = False
+    game_over = False
+
+    
+    background = pygame.image.load('teacher-background.jpg')
+    background = pygame.transform.scale(background, (WIDTH, HEIGHT))
+    character = pygame.image.load('char.jpg')
+    character = pygame.transform.scale(character, (50,50))
+    wood = pygame.image.load('wood-.png')
+    wood = pygame.transform.scale(wood, (90,50))
