@@ -107,3 +107,10 @@ def Game():
 
             Colors.pop(Random_Color)
 
+def Score_Update(Score: int):
+    Label_Score['text'] = f"Score: {Score}"
+
+
+Reset_btn['command'] = Game
+Game()
+window.mainloop()
