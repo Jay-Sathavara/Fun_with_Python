@@ -68,3 +68,42 @@ def Activate(btn: object, color: str):
             Label_Won.pack(side=tk.TOP, expand=True, fill=tk.BOTH)
 
         Match_btn.clear()
+
+def Game():
+    global Score
+    global Guesses
+    global Label_Score
+    global Buttons
+    global Match_btn
+    global Label_Lost
+    global Label_Won
+    global Nav
+
+    Match_btn = []
+    Guesses = 0
+    Score = 25
+    Colors = ['white', 'black', 'red', 'green','blue', 'cyan', 'yellow', 'magenta'] * 2
+
+    Score_Update(Score)
+
+    if len(Buttons):
+        Label_Won.destroy()
+        Label_Lost.destroy()
+        for btn in Buttons:
+            btn.destroy()
+
+    Label_Won = tk.Label(master=Main, text="You WON!", font=("Times new roman", 35))
+    Label_Lost = tk.Label(master=Main, text="You Lost, try again!",font=("Times new roman", 35),)
+
+    for i in range(4):
+        for j in range(4):
+            Random_Color = random.randint(0, len(Colors)-1)
+            color = Colors[Random_Color]
+
+            Square_btn = tk.Button(master=Main, text=f"????", width=10, height=3, background='grey', activebackground=color)
+            Buttons.append(Square_btn)
+            Square_btn.grid(row=i, column=j, padx=10, pady=10)
+            Buttons[-1]['command'] = partial(Activate, Square_btn, color)
+
+            Colors.pop(Random_Color)
+
