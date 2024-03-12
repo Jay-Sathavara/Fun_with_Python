@@ -97,4 +97,3 @@ while True:
         pygame.display.update()
     else:
         game_front_screen()
-
