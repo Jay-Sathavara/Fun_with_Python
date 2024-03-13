@@ -10,7 +10,7 @@ class VideoAudioConverter:
 
     def __init__(self, root):
         self.root = root
-        self.root.title("VIDEO-AUDIO CONVERTER by DataFlair")
+        self.root.title("VIDEO-AUDIO CONVERTER by JP0030")
         self.root.geometry('1280x720')
         self.bg = ImageTk.PhotoImage(file="bg_image.jpg")
         Label(self.root, image=self.bg).place(x=0, y=0)
