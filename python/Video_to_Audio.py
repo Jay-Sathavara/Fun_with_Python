@@ -26,3 +26,17 @@ class VideoAudioConverter:
         self.convert(os.path.basename(self.file_name))
 
         Label(self.root, text='Completed!!', font=("times new roman", 30)).place(x=1000, y=630)
+
+    def convert(self, path):
+        clip = mp.VideoFileClip(r'{}'.format(path))
+        clip.audio.write_audiofile(r'{}mp3'.format(path[:-3]))
+
+def main():
+
+    root = Tk()
+
+    obj = VideoAudioConverter(root)
+    root.mainloop()
+
+if __name__ == "__main__":
+    main()
