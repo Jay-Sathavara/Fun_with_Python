@@ -50,3 +50,8 @@ def madlib3():
     food = input('food name: ')
     print('say ' + food + ', the photographer said as the camera flashed! ' + name + ' and I had gone to ' + place +' to get our photos taken today. The first photo we really wanted was a picture of us dressed as ' + animals + ' pretending to be a ' + profession + ' .when we saw the second photo, it was exactly what I wanted. We both looked like ' + things + ' wearing ' + cloth + ' and ' + verb + ' --exactly what I had in mind')
 
+Button(root, text= 'The Butterfly', font ='arial 15', command = madlib1, bg = 'ghost white').place(x=60, y=120)
+Button(root, text= 'apple and apple', font ='arial 15', command = madlib2 , bg = 'ghost white').place(x=70, y=180)
+Button(root, text= 'The Photographer', font ='arial 15', command= madlib3, bg = 'ghost white').place(x=80, y=240)
+
+root.mainloop()
