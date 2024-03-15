@@ -9,7 +9,7 @@ def draw_flower():
     turtle.pendown()
     turtle.right(90)
 
-    # Flower base
+
     turtle.fillcolor("red")
     turtle.begin_fill()
     turtle.circle(10, 180)
@@ -38,7 +38,7 @@ def draw_flower():
     turtle.circle(150, 90)
     turtle.end_fill()
 
-    # Petal 1
+
     turtle.left(150)
     turtle.circle(-90, 70)
     turtle.left(20)
@@ -47,7 +47,6 @@ def draw_flower():
     turtle.circle(80, 98)
     turtle.circle(-90, 40)
 
-    # Petal 2
     turtle.left(180)
     turtle.circle(90, 40)
     turtle.circle(-80, 98)
