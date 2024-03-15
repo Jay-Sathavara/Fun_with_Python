@@ -9,7 +9,6 @@ def draw_flower():
     turtle.pendown()
     turtle.right(90)
 
-
     turtle.fillcolor("red")
     turtle.begin_fill()
     turtle.circle(10, 180)
@@ -38,7 +37,6 @@ def draw_flower():
     turtle.circle(150, 90)
     turtle.end_fill()
 
-
     turtle.left(150)
     turtle.circle(-90, 70)
     turtle.left(20)
@@ -51,8 +49,7 @@ def draw_flower():
     turtle.circle(90, 40)
     turtle.circle(-80, 98)
     turtle.setheading(-83)
-
-      # Leaves 1
+    
     turtle.fd(30)
     turtle.left(90)
     turtle.fd(25)
@@ -70,4 +67,21 @@ def draw_flower():
     turtle.left(90)
     turtle.fd(80)
 
-    
+    turtle.right(90)
+    turtle.right(45)
+    turtle.fillcolor("green")
+    turtle.begin_fill()
+    turtle.circle(80, 90)
+    turtle.left(90)
+    turtle.circle(80, 90)
+    turtle.end_fill()
+    turtle.left(135)
+    turtle.fd(60)
+    turtle.left(180)
+    turtle.fd(60)
+    turtle.right(90)
+    turtle.circle(200, 60)
+
+    turtle.done()
+
+draw_flower()
