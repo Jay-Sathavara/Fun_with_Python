@@ -9,7 +9,7 @@ def draw_flower():
     turtle.pendown()
     turtle.right(90)
 
-    turtle.fillcolor("red")
+    turtle.fillcolor("#F33A6A")
     turtle.begin_fill()
     turtle.circle(10, 180)
     turtle.circle(25, 110)
