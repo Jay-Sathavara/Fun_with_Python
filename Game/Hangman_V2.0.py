@@ -33,4 +33,17 @@ for row in range(row):
         box = pygame.Rect(x, y, size, size)
         boxes.append(box)
 
-        
+buttons = []
+A = 65
+
+for ind, box in enumerate(boxes):
+    letter = chr(A + ind)
+    button = [box, letter]
+    buttons.append(button)
+
+def draw_buttons(buttons):
+    for box, letter in buttons:
+        btn_text = font.render(letter, True, (0, 0, 0))
+        btn_rect = btn_text.get_rect(center=(box.x + 20, box.y + 20))
+        screen.blit(btn_text, btn_rect)
+        pygame.draw.rect(screen, (0, 0, 0), box, 2)
