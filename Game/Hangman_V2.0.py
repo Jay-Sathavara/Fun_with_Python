@@ -74,3 +74,47 @@ font = pygame.font.SysFont("arial", 30)
 game_font = pygame.font.SysFont("arial", 80)
 letter_font = pygame.font.SysFont("arial", 60)
 
+title = "Hangman"
+title_text = game_font.render(title, True, (0, 0, 0))
+title_rect = title_text.get_rect(center=(width // 2, title_text.get_height() // 2 + 10))
+
+running = True
+while running:
+    screen.fill((255, 255, 255))
+    
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+       
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            click_pos = event.pos
+
+            for button, letter in buttons:
+                if button.collidepoint(click_pos):
+                    if letter not in word:
+                        hangman_status += 1
+                    if hangman_status == 6:
+                        game_over = True
+                    guessed.append(letter)
+                    buttons.remove([button, letter])
+
+            for i in range(5):
+                if hangman_status == 1:
+                    image = pygame.image.load("img_23.png")
+                    images.append(image)
+                elif hangman_status == 2:
+                    image = pygame.image.load("img_22.png")
+                    images.append(image)
+                elif hangman_status == 3:
+                    image = pygame.image.load("img_24.png")
+                    images.append(image)
+                elif hangman_status == 4:
+                    image = pygame.image.load("img_25.png")
+                    images.append(image)
+                elif hangman_status == 5:
+                    image = pygame.image.load("img_26.png")
+                    images.append(image)
+                elif hangman_status == 6:
+                    running = False
+
+    
