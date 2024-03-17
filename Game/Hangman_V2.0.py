@@ -47,3 +47,30 @@ def draw_buttons(buttons):
         btn_rect = btn_text.get_rect(center=(box.x + 20, box.y + 20))
         screen.blit(btn_text, btn_rect)
         pygame.draw.rect(screen, (0, 0, 0), box, 2)
+
+def display_guess():
+    display_text = ''
+    for letter in word:
+        if letter in guessed:
+            display_text += f"{letter} "
+        else:
+            display_text += '_ '
+
+    text = letter_font.render(display_text, True, (0, 0, 0))
+    screen.blit(text, (400, 200))
+
+
+images = []
+hangman_status = 0
+
+words = ['PYGAME', 'PYTHON', 'JAVA', 'HELLO', 'WORLD', 'HANGMAN', 'TIME', 'TURTLE', 'RANDOM']
+word = random.choice(words)
+guessed = []
+
+image = pygame.image.load("img_21.png")
+images.append(image)
+
+font = pygame.font.SysFont("arial", 30)
+game_font = pygame.font.SysFont("arial", 80)
+letter_font = pygame.font.SysFont("arial", 60)
+
