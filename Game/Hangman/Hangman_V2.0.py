@@ -117,4 +117,33 @@ while running:
                 elif hangman_status == 6:
                     running = False
 
-    
+    screen.blit(image, (150, 150))
+    for box in boxes:
+        pygame.draw.rect(screen, (0, 0, 0), box, 2)
+
+    won = True
+    for letter in word:
+        if letter not in guessed:
+            won = False
+    if won:
+        game_over = True
+        game_text = "YOU WON!"
+    else:
+        game_text = "YOU LOST!"
+
+    draw_buttons(buttons)
+    display_guess()
+    screen.blit(title_text, title_rect)
+    clock.tick(50)
+    pygame.display.update()
+
+    if game_over:
+        screen.fill((255, 255, 255))
+        text = game_font.render(game_text, True, (0, 0, 0))
+        text_rect = text.get_rect(center=(width // 2, height // 2))
+        screen.blit(text, text_rect)
+        pygame.display.update()
+        pygame.time.delay(3000)
+        pygame.quit()
+        sys.exit()
+pygame.quit()
