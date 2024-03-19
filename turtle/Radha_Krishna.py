@@ -533,7 +533,7 @@ c.up()
 c.seth(9)
 c.fd(152)
 c.down()
-#3 head4
+
 c.begin_fill()
 c.seth(-20)
 c.circle(-50,98)
@@ -541,12 +541,11 @@ c.seth(80)
 c.circle(70,65)
 c.end_fill()
 
-
 c.up()
 c.seth(-91)
 c.fd(80)
 c.down()
-#1 hair1
+
 c.seth(-35)
 c.pensize(3)
 c.circle(-25,45)
@@ -570,7 +569,7 @@ c.up()
 c.seth(32)
 c.fd(29)
 c.down()
-#1 hair2
+
 c.seth(24)
 c.pensize(3)
 c.circle(-25,45)
@@ -594,7 +593,7 @@ c.up()
 c.seth(170)
 c.fd(31)
 c.down()
-#1 hair3
+
 c.seth(-33)
 c.pensize(3)
 c.circle(-48,45)
@@ -615,12 +614,11 @@ c.circle(-20,20)
 c.pensize(2)
 c.circle(-20,10)
 
-
 c.up()
 c.seth(169)
 c.fd(245)
 c.down()
-#2 hair1
+
 c.seth(-155)
 c.pensize(3)
 c.circle(25,45)
@@ -639,3 +637,4 @@ c.pensize(2)
 c.circle(10,20)
 c.pensize(1)
 c.circle(10,10)
+
