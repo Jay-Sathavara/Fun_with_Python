@@ -2,7 +2,7 @@
 
 import cv2 as cv
 
-image = cv.imread("iron.jpeg")
+image = cv.imread("house 2.png") # add your image
 
 gray_image = cv.cvtColor(image, cv.COLOR_BGR2GRAY)
 
@@ -12,6 +12,6 @@ blur_image = cv.GaussianBlur(invert_image, (21,21), 0)
 
 invert_blur = cv.bitwise_not(blur_image)
 
-sketch = cv.divide(gray_image, invert_blur, scale=256.0)
+sketch = cv.divide(gray_image, invert_blur, scale=300)
 
-cv.imwrite("Sketch4.png", invert_blur)
+cv.imwrite("JP0030.png", invert_blur)
