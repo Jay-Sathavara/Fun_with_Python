@@ -27,7 +27,6 @@ player2_speed = 6
 player1_score = 0
 player2_score = 0
 
-
 def ball_movement():
     global ball_speedx, ball_speedy, player1_score, player2_score
     ball.x += ball_speedx
@@ -52,3 +51,44 @@ def player1_movement():
         player1.top = 0
     if player1.bottom >= height:
         player1.bottom = height
+
+def player2_movement():
+    global player2_speed
+    if player2.top < ball.y:
+        player2.top += player2_speed
+    if player2.bottom > ball.y:
+        player2.bottom -= player2_speed
+    if player2.top <= 0:
+        player2_top = 0
+    if player2.bottom >= height:
+        player2.bottom = height
+
+
+def ball_restart():
+    global ball_speedx, ball_speedy
+    ball.center = (width / 2, height / 2)
+    ball_speedy *= random.choice((1, -1))
+    ball_speedx *= random.choice((1, -1))
+
+font = pygame.font.SysFont("calibri", 25)
+
+while True:
+    for event in pygame.event.get():
+
+        if event.type == pygame.QUIT:
+            pygame.quit()
+            sys.exit()
+
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_DOWN:
+                player1_speed += 8
+            if event.key == pygame.K_UP:
+                player1_speed -= 8
+
+        if event.type == pygame.KEYUP:
+            if event.key == pygame.K_DOWN:
+                player1_speed -= 8
+            if event.key == pygame.K_UP:
+                player1_speed += 8
+
+                
