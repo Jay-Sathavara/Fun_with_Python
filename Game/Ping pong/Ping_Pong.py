@@ -91,4 +91,26 @@ while True:
             if event.key == pygame.K_UP:
                 player1_speed += 8
 
-                
+    ball_movement()
+    player1_movement()
+    player2_movement()
+
+    if ball.x < 0:
+        player1_score += 1
+    elif ball.x > width:
+        player2_score += 1
+
+    screen.fill((0, 0, 0))
+    pygame.draw.rect(screen, (220, 220, 220), player1)
+    pygame.draw.rect(screen, (220, 220, 220), player2)
+    pygame.draw.ellipse(screen, (220, 220, 220), ball)
+    pygame.draw.aaline(screen, (220, 220, 220), (width / 2, 0), (width / 2, height))
+
+    player1_text = font.render("Score:" + str(player1_score), False, (255, 255, 255))
+    screen.blit(player1_text, [600, 50])
+    player2_text = font.render("Score:" + str(player2_score), False, (255, 255, 255))
+    screen.blit(player2_text, [300, 50])
+
+    pygame.display.update()
+
+    c.tick(60)                
