@@ -45,10 +45,19 @@ def insert(screen, position):
 running = True
 while running:
     screen.fill((255, 255, 255))
-    # Checking the event
+
     for event in pygame.event.get():
         if event.type == pygame.MOUSEBUTTONUP and event.button == 1:
             pos = pygame.mouse.get_pos()
             insert(screen, (pos // 50, pos // 50))
         if event.type == pygame.QUIT:
             running = False
+
+     for i in range(0, 10):
+        if (i % 3 == 0):
+            pygame.draw.line(screen, (0, 0, 0), (50 + 50 * i, 50), (50 + 50 * i, 500), 4)
+            pygame.draw.line(screen, (0, 0, 0), (50, 50 + 50 * i), (500, 50 + 50 * i), 4)
+        pygame.draw.line(screen, (0, 0, 0), (50 + 50 * i, 50), (50 + 50 * i, 500), 2)
+        pygame.draw.line(screen, (0, 0, 0), (50, 50 + 50 * i), (500, 50 + 50 * i), 2)
+
+    pygame.display.update()
