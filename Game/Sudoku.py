@@ -41,3 +41,14 @@ def insert(screen, position):
                          s_grid[i - 1][j - 1] = event.key - 48
                          pygame.display.update()
     return
+
+running = True
+while running:
+    screen.fill((255, 255, 255))
+    # Checking the event
+    for event in pygame.event.get():
+        if event.type == pygame.MOUSEBUTTONUP and event.button == 1:
+            pos = pygame.mouse.get_pos()
+            insert(screen, (pos // 50, pos // 50))
+        if event.type == pygame.QUIT:
+            running = False
