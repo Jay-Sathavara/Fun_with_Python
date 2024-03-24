@@ -53,7 +53,7 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
-     for i in range(0, 10):
+    for i in range(0, 10):
         if (i % 3 == 0):
             pygame.draw.line(screen, (0, 0, 0), (50 + 50 * i, 50), (50 + 50 * i, 500), 4)
             pygame.draw.line(screen, (0, 0, 0), (50, 50 + 50 * i), (500, 50 + 50 * i), 4)
@@ -61,3 +61,11 @@ while running:
         pygame.draw.line(screen, (0, 0, 0), (50, 50 + 50 * i), (500, 50 + 50 * i), 2)
 
     pygame.display.update()
+
+    for i in range(0, len(s_grid[0])):
+        for j in range(0, len(s_grid[0])):
+            if (0 < s_grid[i][j] < 10):
+                value = font.render(str(s_grid[i][j]), True, grid_color)
+                screen.blit(value, ((j + 1) * 50 + 15, (i + 1) * 50))
+    pygame.display.update()
+pygame.quit()
