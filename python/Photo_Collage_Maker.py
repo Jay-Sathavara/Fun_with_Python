@@ -19,3 +19,5 @@ collage.paste(image3,(1000,0))
 collage.paste(image2,(500,500))
 collage.paste(image4,(0,1000))
 collage.paste(image5,(1000,1000))
+
+collage.save("Photo_Collage.png")
