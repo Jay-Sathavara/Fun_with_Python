@@ -31,7 +31,7 @@ def getColorName(R,G,B):
             cname = csv.loc[i,"color_name"]
     return cname
 
-def draw_function(event, x,y,flags,param):
+def draw_function(event, x,y,JP0030,param):
     if event == cv2.EVENT_LBUTTONDBLCLK:
         global b,g,r,xpos,ypos, clicked
         clicked = True
