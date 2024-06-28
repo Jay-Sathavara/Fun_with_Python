@@ -91,3 +91,135 @@ class InventoryApp:
         add_user(username, password)
         messagebox.showinfo("Success", "User registered successfully")
 
+    def create_main_screen(self):
+        self.clear_screen()
+        
+        Label(self.root, text="Welcome, " + self.current_user).pack(pady=10)
+        
+        Button(self.root, text="Add Product", command=self.add_product_screen).pack(pady=5)
+        Button(self.root, text="View Products", command=self.view_products).pack(pady=5)
+        Button(self.root, text="Generate Reports", command=self.generate_reports_screen).pack(pady=5)
+        Button(self.root, text="Low-Stock Alerts", command=self.low_stock_alerts).pack(pady=5)
+        Button(self.root, text="Logout", command=self.create_login_screen).pack(pady=20)
+
+    def add_product_screen(self):
+        self.clear_screen()
+        
+        Label(self.root, text="Product Name").pack(pady=10)
+        self.product_name_entry = Entry(self.root)
+        self.product_name_entry.pack(pady=5)
+        
+        Label(self.root, text="Quantity").pack(pady=10)
+        self.product_quantity_entry = Entry(self.root)
+        self.product_quantity_entry.pack(pady=5)
+        
+        Label(self.root, text="Price").pack(pady=10)
+        self.product_price_entry = Entry(self.root)
+        self.product_price_entry.pack(pady=5)
+        
+        Button(self.root, text="Add Product", command=self.add_product).pack(pady=20)
+        Button(self.root, text="Back", command=self.create_main_screen).pack(pady=5)
+
+    def add_product(self):
+        name = self.product_name_entry.get()
+        quantity = int(self.product_quantity_entry.get())
+        price = float(self.product_price_entry.get())
+        
+        conn = sqlite3.connect('inventory.db')
+        cursor = conn.cursor()
+        cursor.execute('INSERT INTO products (name, quantity, price) VALUES (?, ?, ?)', (name, quantity, price))
+        conn.commit()
+        conn.close()
+        
+        messagebox.showinfo("Success", "Product added successfully")
+        self.create_main_screen()
+
+    def view_products(self):
+        self.clear_screen()
+
+        conn = sqlite3.connect('inventory.db')
+        cursor = conn.cursor()
+        cursor.execute('SELECT * FROM products')
+        products = cursor.fetchall()
+        conn.close()
+
+        for product in products:
+            Label(self.root, text=f"ID: {product[0]}, Name: {product[1]}, Quantity: {product[2]}, Price: {product[3]}").pack(pady=5)
+            Button(self.root, text="Edit", command=lambda p=product: self.edit_product_screen(p)).pack(pady=5)
+            Button(self.root, text="Delete", command=lambda p=product: self.delete_product(p[0])).pack(pady=5)
+
+        Button(self.root, text="Back", command=self.create_main_screen).pack(pady=20)
+
+    def edit_product_screen(self, product):
+        self.clear_screen()
+
+        Label(self.root, text="Edit Product").pack(pady=10)
+        
+        Label(self.root, text="Product Name").pack(pady=10)
+        self.product_name_entry = Entry(self.root)
+        self.product_name_entry.insert(0, product[1])
+        self.product_name_entry.pack(pady=5)
+        
+        Label(self.root, text="Quantity").pack(pady=10)
+        self.product_quantity_entry = Entry(self.root)
+        self.product_quantity_entry.insert(0, product[2])
+        self.product_quantity_entry.pack(pady=5)
+        
+        Label(self.root, text="Price").pack(pady=10)
+        self.product_price_entry = Entry(self.root)
+        self.product_price_entry.insert(0, product[3])
+        self.product_price_entry.pack(pady=5)
+        
+        Button(self.root, text="Save Changes", command=lambda: self.edit_product(product[0])).pack(pady=20)
+        Button(self.root, text="Back", command=self.view_products).pack(pady=5)
+
+    def edit_product(self, product_id):
+        name = self.product_name_entry.get()
+        quantity = int(self.product_quantity_entry.get())
+        price = float(self.product_price_entry.get())
+
+        conn = sqlite3.connect('inventory.db')
+        cursor = conn.cursor()
+        cursor.execute('UPDATE products SET name = ?, quantity = ?, price = ? WHERE id = ?', (name, quantity, price, product_id))
+        conn.commit()
+        conn.close()
+
+        messagebox.showinfo("Success", "Product updated successfully")
+        self.view_products()
+
+    def delete_product(self, product_id):
+        conn = sqlite3.connect('inventory.db')
+        cursor = conn.cursor()
+        cursor.execute('DELETE FROM products WHERE id = ?', (product_id,))
+        conn.commit()
+        conn.close()
+
+        messagebox.showinfo("Success", "Product deleted successfully")
+        self.view_products()
+
+    def generate_reports_screen(self):
+        self.clear_screen()
+        
+        Label(self.root, text="Sales Summary").pack(pady=10)
+        
+        Button(self.root, text="Back", command=self.create_main_screen).pack(pady=20)
+
+    def low_stock_alerts(self):
+        self.clear_screen()
+        
+        conn = sqlite3.connect('inventory.db')
+        cursor = conn.cursor()
+        cursor.execute('SELECT * FROM products WHERE quantity < 5') 
+        products = cursor.fetchall()
+        conn.close()
+
+        Label(self.root, text="Low-Stock Products").pack(pady=10)
+        for product in products:
+            Label(self.root, text=f"ID: {product[0]}, Name: {product[1]}, Quantity: {product[2]}, Price: {product[3]}").pack(pady=5)
+        
+        Button(self.root, text="Back", command=self.create_main_screen).pack(pady=20)
+
+if __name__ == "__main__":
+    root = Tk()
+    app = InventoryApp(root)
+    root.mainloop()
