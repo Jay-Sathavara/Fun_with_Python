@@ -19,11 +19,11 @@ def setup_db():
     conn.commit()
     conn.close()
 
-# Hashing passwords
+
 def hash_password(password):
     return hashlib.sha256(password.encode()).hexdigest()
 
-# Adding a new user
+
 def add_user(username, password):
     conn = sqlite3.connect('inventory.db')
     cursor = conn.cursor()
@@ -35,7 +35,7 @@ def add_user(username, password):
         messagebox.showerror("Error", "Username already exists")
     conn.close()
 
-# Checking user credentials
+
 def check_user(username, password):
     conn = sqlite3.connect('inventory.db')
     cursor = conn.cursor()
@@ -44,4 +44,5 @@ def check_user(username, password):
     user = cursor.fetchone()
     conn.close()
     return user
+
 
